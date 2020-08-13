@@ -19,7 +19,6 @@ app.post("/", function(req, res) {
   const firstName = req.body.fName;
   const lastName = req.body.lName;
   const email = req.body.email;
-
   const data = {
     members: [{
       email_address: email,
@@ -37,7 +36,6 @@ app.post("/", function(req, res) {
     method: "POST",
     auth: "rakesh1:c2f2807cc0db817e67dc2cfb2ec3e073-us10"
   }
-
   const request = https.request(url, option, function(response) {
     if(response.statusCode==200){
       res.sendFile(__dirname+"/success.html");
@@ -51,16 +49,10 @@ app.post("/", function(req, res) {
   })
   request.write(jsonData);
   request.end();
-
-
-
 });
-
 app.post("/failure",function(req,res){
     res.redirect("/");
 });
-
-
 app.listen(process.env.PORT || 3000, function() {
   console.log("server is started ");
 });
